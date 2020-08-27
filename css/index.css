@@ -1,0 +1,165 @@
+/* font */
+@font-face {
+    font-family:Arial, Helvetica, sans-serif;
+    src: url();
+}
+/* style utama */
+body {
+    font:18/36px 'Arial Narrow', arial, sans-serif;
+    background-color: #ddd;
+}
+h1 {
+    font-size: 80px;
+    text-align: center;
+    text-shadow: 2px 2px 2px white;
+    margin: 50px 0;
+}
+.container {
+width:600px;
+background-color: white;
+margin:auto;
+padding: 30px;
+box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+border-radius: 5px;
+}
+
+.gallery li {
+    width: 125px;
+    height: 125px;
+    overflow: hidden;
+    border: 5px solid black;
+    float:left;
+    position: relative;
+    margin-right: 10px;
+}
+
+.gallery li, .gallery li a img, .gallery li span {
+    border-radius: 50%;
+}
+
+.gallery li span {
+    display: block;
+    width: 125px;
+    height:125px;
+    background-color: rgba(255, 248, 220, 0.418);
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 125px;
+    color: #333;
+    text-shadow: 1px 1px 1px #ddd;
+    opacity: 0;
+    transform: scale(0) rotate(0);
+    /* transition: 0.3s; */
+}
+
+.gallery li a:hover span {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+    transition: 0.8s;
+}
+
+.clear {
+    clear: both;
+}
+
+/* overlay */
+.overlay {
+    width:0px;
+    height:0px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 9999;
+    /* transition: .8s; */
+    text-align:center;
+    /* padding:140px; */
+    
+}
+.overlay:target {
+    width:auto;
+    height:auto;
+    bottom:0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding:140px;
+}
+.overlay img {
+    max-height:100%;
+    box-shadow:2px 2px 7px rgba(0, 0, 0, 0.5);
+}
+.overlay:target img {
+    animation: fadeAjah 1s;
+    /* animation: zoomDanFade 1s; */
+
+}
+
+.overlay .close {
+position: absolute;
+top: 118px;
+color: white;
+text-decoration: none;
+background-color: black;
+border: 1px solid white;
+opacity: 0;
+}
+.overlay:target .close {
+    animation: slideDown .5s .5s forwards;
+}
+.overlay:target .next {
+    animation: fadeAjah .5s .5s forwards;
+}
+.overlay:target .prev {
+    animation: fadeAjah .5s .5s forwards;
+}
+
+/* navigasi */
+.next,.prev {
+    width:57px;
+    height:93px;
+    background-image: url('../img/next.png');
+    position:absolute;
+    text-indent: -9999px;
+    top: 42%;
+    margin-left: 25px;
+    opacity: 0;
+
+}
+.prev {
+    background-image: url('../img/prev.png');
+    margin-left: -75px;
+}
+
+
+/* animasi */
+@keyframes fadeAjah {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* @keyframes zoomDanFade {
+    0% {
+        transform: scale(0);
+        opacity:0;
+    }
+    100% {
+        transform: scale(1);
+        opacity:1;
+    }
+} */
+
+@keyframes slideDown {
+    0%{
+        opacity: 0;
+        margin-top: -20px;
+    }
+    100%{
+        opacity:1;
+        margin-top: 0px;
+    }
+}
